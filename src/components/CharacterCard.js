@@ -1,4 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+//style
+const wrapperDiv = styled.div`
+width:400px;
+margin-bottom: 50px;
+border: 1px solid black;
+border-radius: 10px;
+background-color: gray;
+text-align: center;
+`;
 
 export default function CharacterCard(props) {
   const characterData = props.characterData;
