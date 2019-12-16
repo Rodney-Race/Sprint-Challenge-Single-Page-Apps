@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function SearchForm({ onSearch }) {
-  const[query, setQuery] = useState({
-    name:""
-  })
+export default function SearchForm(props) {
+  //console.log(props)
+
   const handleInputChange = (event) => {
-    setQuery({ ...query, name: event.target.value })
+    props.setAnything(event.target.value)
   }
  
   return (
     <section className="search-form">
-     <form onSubmit = {() => onSearch(query)}>
+     <form
+      onSubmit = {
+        (event) => {
+          event.preventDefault()
+          props.setApiKey(`${props.apiKey}?name=${props.anything}`)
+        }
+      }
+     >
        <input
          onChange = {handleInputChange}
-         placeholder = "name"
-         value = {query.name}
-         name = "name"
+         value = {props.anything}
        />
        <button type = "submit">Search</button>
+       
       </form>
+      
     </section>
   );
 }
